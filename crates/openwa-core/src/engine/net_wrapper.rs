@@ -14,6 +14,7 @@ pub struct DDNetGameWrapper {
     pub _data: [u8; 0x2C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DDNetGameWrapper>() == 0x2C);
 
 impl DDNetGameWrapper {

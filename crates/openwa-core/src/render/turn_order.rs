@@ -43,6 +43,7 @@ pub struct AnimatedItemList {
     pub initialized: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<AnimatedItemList>() == 0x2C);
 
 /// Turn order widget — top-level UI component at DDGame+0x530.
@@ -64,6 +65,7 @@ pub struct TurnOrderWidget {
     pub ddgame: *mut DDGame,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TurnOrderWidget>() == 0x4C);
 
 /// Turn order alliance group — per-alliance container.
@@ -86,6 +88,7 @@ pub struct TurnOrderAllianceGroup {
     pub _unknown_10: [u8; 0x30 - 0x10],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TurnOrderAllianceGroup>() == 0x30);
 
 /// Turn order team entry — per-team banner with health bar.
@@ -118,4 +121,5 @@ pub struct TurnOrderTeamEntry {
     pub bar_height: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TurnOrderTeamEntry>() == 0x24);

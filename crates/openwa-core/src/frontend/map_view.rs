@@ -33,6 +33,7 @@ pub struct MapView {
     pub _unknown_29619: [u8; 0x29628 - 0x29619],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<MapView>() == 0x29628);
 
 /// MapView vtable (partial — only known slots).

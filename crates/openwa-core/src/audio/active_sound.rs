@@ -22,6 +22,7 @@ pub struct ActiveSoundTable {
     pub ddgame: *mut DDGame,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<ActiveSoundTable>() == 0x608);
 
 /// A single entry in the active sound table (0x18 = 24 bytes).
@@ -46,6 +47,7 @@ pub struct ActiveSoundEntry {
     pub channel_handle: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<ActiveSoundEntry>() == 0x18);
 
 impl ActiveSoundTable {

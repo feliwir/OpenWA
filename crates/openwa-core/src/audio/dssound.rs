@@ -55,6 +55,7 @@ pub struct ChannelDescriptor {
     pub ds_buffer: Ptr32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<ChannelDescriptor>() == 0x18);
 
 impl ChannelDescriptor {
@@ -195,6 +196,7 @@ pub struct DSSound {
     pub _unknown_bc0: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DSSound>() == 0xBE0);
 
 bind_DSSoundVtable!(DSSound, vtable);

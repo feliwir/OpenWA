@@ -170,6 +170,7 @@ pub struct CTask<V: Vtable = *const core::ffi::c_void> {
     pub ddgame: *mut DDGame,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTask>() == 0x30);
 
 /// Marker trait for types that can be used as vtable pointers in `CTask<V>`.
@@ -362,6 +363,7 @@ pub struct SharedDataNode {
     pub _padding: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SharedDataNode>() == 0x30);
 
 /// View of the 256-bucket entity hash table at `CTask.shared_data`.

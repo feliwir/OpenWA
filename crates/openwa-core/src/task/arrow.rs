@@ -43,6 +43,7 @@ pub struct CTaskArrow {
     pub _unknown_fc: [u8; 0x168 - 0xFC],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskArrow>() == 0x168);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().

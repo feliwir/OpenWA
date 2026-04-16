@@ -34,6 +34,7 @@ pub struct GfxCacheSlot {
     pub current_pos: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<GfxCacheSlot>() == 0x10);
 
 /// .dir archive reader (0x19C bytes, vtable 0x66B280).
@@ -64,6 +65,7 @@ pub struct GfxDir {
     pub file_handle: *mut u8,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<GfxDir>() == 0x19C);
 
 impl GfxDir {

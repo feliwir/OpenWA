@@ -28,4 +28,5 @@ pub struct OpenGLState {
     pub _field_44: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<OpenGLState>() == 0x48);

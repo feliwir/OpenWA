@@ -99,6 +99,7 @@ pub struct BitGrid<V: Vtable = *const BitGridBaseVtable> {
     pub clip_bottom: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<BitGrid>() == 0x2C);
 
 impl BitGrid {

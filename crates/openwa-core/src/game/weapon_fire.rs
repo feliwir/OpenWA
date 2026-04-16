@@ -40,6 +40,7 @@ pub struct WeaponReleaseContext {
     pub network_delay: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WeaponReleaseContext>() == 0x2C);
 
 // ============================================================

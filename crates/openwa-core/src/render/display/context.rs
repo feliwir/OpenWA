@@ -286,6 +286,7 @@ pub struct RenderContext {
     pub renderer_backend: *mut u8,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<RenderContext>() == 0x1C);
 
 // Generate calling wrappers: RenderContext::get_renderer_surface_raw(), etc.

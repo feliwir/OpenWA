@@ -143,6 +143,7 @@ pub struct CTaskMissile {
     pub _unknown_3cc: [u8; 0x40],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskMissile>() == 0x40C);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().

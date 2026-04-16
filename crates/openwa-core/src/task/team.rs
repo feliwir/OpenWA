@@ -111,6 +111,7 @@ pub struct CTaskTeam {
     pub _unknown_414: [u8; 0x4C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskTeam>() == 0x460);
 
 // Generate typed vtable method wrappers: handle_message(), write_replay_state(), etc.

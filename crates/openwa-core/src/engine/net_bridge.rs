@@ -24,4 +24,5 @@ pub struct NetBridge {
     pub _pad_2a: [u8; 2],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<NetBridge>() == 0x2C);

@@ -1,7 +1,10 @@
 //! Memory inspection utilities — pointer classification and safe read checks.
 
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 use crate::address::va;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 use crate::registry;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 use openwa_debug_proto::{PointerInfo, PointerKind};
 
 #[cfg(target_os = "windows")]
@@ -28,7 +31,7 @@ pub unsafe fn can_read(_ptr: u32, _size: u32) -> bool {
 /// values that don't point into any known section or readable memory.
 ///
 /// `delta` is `runtime_base - 0x400000` (the ASLR offset).
-#[cfg(target_os = "windows")]
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub unsafe fn classify_pointer(value: u32, delta: u32) -> Option<PointerInfo> {
     if value == 0 || value < 0x10000 {
         return None;
@@ -131,6 +134,7 @@ pub unsafe fn classify_pointer(value: u32, delta: u32) -> Option<PointerInfo> {
 }
 
 /// Rich pointer identification result.
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 #[derive(Debug)]
 pub struct PointerIdentity {
     /// Raw runtime value.

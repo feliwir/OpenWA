@@ -2366,9 +2366,13 @@ pub struct TiledBitmapSource {
     pub source_height: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(TiledBitmapSource, data) == 0x08);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(TiledBitmapSource, row_stride) == 0x10);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(TiledBitmapSource, bpp) == 0x14);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(TiledBitmapSource, source_height) == 0x18);
 
 /// Pure-Rust port of `FUN_005B2A5E` — 8bpp 64-byte row replicator.

@@ -28,6 +28,7 @@ pub struct InputCtrl {
     pub _unknown_d78: [u8; 0x1800 - 0xD78],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<InputCtrl>() == 0x1800);
 
 // Generate calling wrappers: InputCtrl::destructor()

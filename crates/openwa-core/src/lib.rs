@@ -28,27 +28,40 @@ pub use openwa_derive::FieldRegistry;
 #[macro_use]
 pub mod macros;
 
-pub mod asset;
-pub mod audio;
-pub mod bitgrid;
-pub mod engine;
-pub mod frontend;
-pub mod game;
-pub mod input;
-pub mod render;
-
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod address;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod asset;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod audio;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod bitgrid;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod engine;
 pub mod field_format;
 pub mod fixed;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod frontend;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod game;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod input;
 pub mod log;
 pub mod mem;
 pub mod rebase;
 pub mod registry;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+pub mod render;
 pub mod rng;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod snapshot;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod task;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod trig;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod vtable;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod wa;
 pub mod wa_alloc;
 pub mod wa_call;

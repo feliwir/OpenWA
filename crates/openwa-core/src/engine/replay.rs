@@ -69,6 +69,7 @@ pub struct ReplayTeamEntry {
     pub weapons: [u8; 0xC54],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<ReplayTeamEntry>() == 0xD7B);
 
 /// Maximum number of teams in a replay.

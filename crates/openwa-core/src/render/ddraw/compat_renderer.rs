@@ -193,6 +193,7 @@ pub struct CompatRenderer {
     pub height: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CompatRenderer>() == 0x44);
 
 // Generate calling wrappers: CompatRenderer::flip(), etc.

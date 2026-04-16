@@ -50,6 +50,7 @@ pub struct Font {
     pub aux_alloc: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<Font>() == 0x1C);
 
 /// Per-glyph metadata in a `.fnt` file (12 bytes).
@@ -77,6 +78,7 @@ pub struct GlyphEntry {
     pub pixel_offset: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<GlyphEntry>() == 0xC);
 
 /// Fixed prefix of a `.fnt` binary blob (0xC bytes).
@@ -99,6 +101,7 @@ pub struct FntHeader {
     // +0x0C: packed RGB triplets (variable length)
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<FntHeader>() == 0xC);
 
 /// Port of `FUN_004f99d0` — parses `.fnt` binary data into a `FontObject`.

@@ -12,4 +12,5 @@ pub struct GameTimer {
     pub _data: [u8; 0x30],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<GameTimer>() == 0x30);

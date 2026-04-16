@@ -537,6 +537,7 @@ pub struct DDGame {
     pub _unknown_98b4: [u8; 0x98D8 - 0x98B4],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DDGame>() == 0x98D8);
 
 // ============================================================

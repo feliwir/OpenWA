@@ -172,4 +172,5 @@ pub struct TypedRenderCmd {
 
 // Canary for buffer pressure — if this fires, revisit the size budget
 // note in the plan (consider #[repr(u8)] discriminant or variant splitting).
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TypedRenderCmd>() <= 48);

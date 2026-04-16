@@ -93,6 +93,7 @@ pub struct PCLandscape {
     pub control_flag: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<PCLandscape>() == 0xB40);
 
 /// A dirty rectangle entry in the PCLandscape dirty rect queue.
@@ -106,6 +107,7 @@ pub struct DirtyRect {
     pub y2: u16,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DirtyRect>() == 8);
 
 /// PCLandscape vtable (32 slots at 0x66B208).

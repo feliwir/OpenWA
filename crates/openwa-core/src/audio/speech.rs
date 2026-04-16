@@ -321,7 +321,9 @@ impl SpeechSlotTable {
     }
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpeechLineTableEntry>() == 8);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpeechSlotTable>() == 0x5A0);
 
 impl core::fmt::Debug for SpeechSlotTable {

@@ -1,12 +1,15 @@
 //! WA heap allocation utilities.
 
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 use crate::address::va;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 use crate::rebase::rb;
 
 /// Allocate `size` bytes from WA's statically-linked CRT heap.
 ///
 /// # Safety
 /// Must only be called from within the WA.exe process (game or injected DLL).
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub unsafe fn wa_malloc(size: u32) -> *mut u8 {
     let f: unsafe extern "cdecl" fn(u32) -> *mut u8 =
         core::mem::transmute(rb(va::WA_MALLOC) as usize);
@@ -19,6 +22,7 @@ pub unsafe fn wa_malloc(size: u32) -> *mut u8 {
 ///
 /// # Safety
 /// Must only be called from within the WA.exe process (game or injected DLL).
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub unsafe fn wa_malloc_struct<T>() -> *mut T {
     wa_malloc(core::mem::size_of::<T>() as u32) as *mut T
 }
@@ -28,6 +32,7 @@ pub unsafe fn wa_malloc_struct<T>() -> *mut T {
 ///
 /// # Safety
 /// Must only be called from within the WA.exe process (game or injected DLL).
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub unsafe fn wa_malloc_struct_zeroed<T>() -> *mut T {
     wa_malloc_zeroed(core::mem::size_of::<T>() as u32) as *mut T
 }
@@ -38,6 +43,7 @@ pub unsafe fn wa_malloc_struct_zeroed<T>() -> *mut T {
 ///
 /// # Safety
 /// Must only be called from within the WA.exe process.
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub unsafe fn wa_malloc_zeroed(size: u32) -> *mut u8 {
     let ptr = wa_malloc(size);
     if !ptr.is_null() {
@@ -50,6 +56,7 @@ pub unsafe fn wa_malloc_zeroed(size: u32) -> *mut u8 {
 ///
 /// # Safety
 /// `ptr` must have been returned by `wa_malloc` (or null, which is a no-op).
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub unsafe fn wa_free<T>(ptr: *mut T) {
     let f: unsafe extern "cdecl" fn(*mut u8) = core::mem::transmute(rb(va::WA_FREE) as usize);
     f(ptr as *mut u8);

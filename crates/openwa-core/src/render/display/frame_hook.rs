@@ -58,6 +58,7 @@ pub struct FramePostProcessHook {
     pub vtable: *const FramePostProcessHookVtable,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<FramePostProcessHook>() == 4);
 
 /// Vtable for `FramePostProcessHook` (3 slots, 0x66A2B8).

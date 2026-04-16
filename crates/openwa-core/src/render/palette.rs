@@ -33,15 +33,25 @@ pub struct PaletteContext {
     pub cache_iter: i16,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, dirty_range_min) == 0x00);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, dirty_range_max) == 0x02);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, rgb_table) == 0x04);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, in_use) == 0x404);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, free_count) == 0x504);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, free_stack) == 0x506);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, cache_count) == 0x606);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, cache) == 0x608);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, dirty) == 0x708);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(PaletteContext, cache_iter) == 0x70A);
 
 /// Pure Rust port of PaletteContext__Init (0x5411A0).

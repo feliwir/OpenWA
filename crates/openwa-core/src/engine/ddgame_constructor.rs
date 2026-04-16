@@ -1079,7 +1079,6 @@ unsafe extern "C" fn call_usercall_eax(_wrapper: *mut DDGameWrapper, _addr: u32)
 }
 
 /// Bridge: usercall(ECX=wrapper), plain RET. Used by FUN_5717A0.
-#[cfg(target_arch = "x86")]
 unsafe fn call_usercall_ecx(wrapper: *mut DDGameWrapper, addr: u32) {
     let f: unsafe extern "thiscall" fn(*mut DDGameWrapper) = core::mem::transmute(addr as usize);
     f(wrapper);

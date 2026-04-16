@@ -135,6 +135,7 @@ pub struct WeaponSpawnData {
     /// [10] Fallback param — copied to render_data[0x11] if that field was zero.
     pub fallback_param: u32,
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WeaponSpawnData>() == 0x2C);
 
 // ============================================================
@@ -334,6 +335,7 @@ pub struct WeaponEntry {
     /// to fire sub-functions (PlacedExplosive, Projectile, CreateWeaponProjectile, etc.).
     pub fire_params: WeaponFireParams,
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WeaponEntry>() == 0x1D0);
 
 /// Weapon fire parameters — embedded at WeaponEntry+0x3C (0x194 = 404 bytes, 101 DWORDs).
@@ -436,6 +438,7 @@ pub struct WeaponFireParams {
     /// [95]+0x1CC: Unknown (Bazooka=100, Grenade=70, Shotgun=20).
     pub entry_metadata: [i32; 7],
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WeaponFireParams>() == 0x1D0 - 0x3C);
 
 /// Weapon table — flat array of 71 entries, no header.
@@ -447,4 +450,5 @@ pub struct WeaponTable {
     /// Weapon entries array (71 standard weapons, indices 0..70).
     pub entries: [WeaponEntry; 71],
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WeaponTable>() == 71 * 0x1D0);

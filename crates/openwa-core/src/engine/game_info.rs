@@ -306,6 +306,7 @@ pub struct GameInfo {
     pub input_state_f918: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<GameInfo>() == 0xF91C);
 
 impl GameInfo {

@@ -624,6 +624,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(all(target_os = "windows", target_arch = "x86"))]
     fn derive_field_registry_ctask() {
         use crate::task::CTask;
 
@@ -646,6 +647,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(all(target_os = "windows", target_arch = "x86"))]
     fn derive_field_registry_ddgame() {
         use crate::engine::DDGame;
 
@@ -675,6 +677,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(all(target_os = "windows", target_arch = "x86"))]
     fn derive_field_registry_game_session() {
         use crate::engine::GameSession;
 
@@ -687,6 +690,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(all(target_os = "windows", target_arch = "x86"))]
     fn derive_preserves_doc_comments() {
         use crate::task::CTask;
 
@@ -701,6 +705,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(all(target_os = "windows", target_arch = "x86"))]
     fn struct_fields_for_lookup() {
         // Global registry should find structs by name
         let ddgame = struct_fields_for("DDGame");
@@ -721,6 +726,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(all(target_os = "windows", target_arch = "x86"))]
     fn struct_fields_for_vtable_lookup() {
         use crate::address::va;
 

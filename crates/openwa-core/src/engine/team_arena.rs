@@ -28,6 +28,7 @@ pub struct TeamIndexMap {
     /// Terminator (initialized to 0).
     pub terminator: u16,
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TeamIndexMap>() == 0x64);
 
 // ============================================================
@@ -78,6 +79,7 @@ pub struct WormEntry {
     pub _unknown_90: [u8; 0x0C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WormEntry>() == 0x9C);
 
 /// Team-level metadata stored at slot 0 of each TeamBlock (0x9C bytes).
@@ -118,6 +120,7 @@ pub struct TeamHeader {
     pub _unknown_98: [u8; 4],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TeamHeader>() == 0x9C);
 
 /// Union for slot 0 of a TeamBlock.
@@ -159,6 +162,7 @@ pub struct TeamBlock {
     pub trailer: [u8; 0x3C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TeamBlock>() == 0x51C);
 
 /// Per-alliance weapon ammo and delay data (0x238 = 568 bytes per alliance).
@@ -169,6 +173,7 @@ pub struct TeamWeaponSlots {
     /// Delay flags per weapon (71 entries). Nonzero = weapon on cooldown.
     pub delay: [i32; 71],
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TeamWeaponSlots>() == 0x238);
 
 /// Weapon slot data for all 6 alliances (0xD50 = 3408 bytes total).
@@ -176,6 +181,7 @@ const _: () = assert!(core::mem::size_of::<TeamWeaponSlots>() == 0x238);
 pub struct WeaponSlots {
     pub teams: [TeamWeaponSlots; 6],
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WeaponSlots>() == 852 * 4);
 
 /// Team arena state area within DDGame (at DDGame + 0x4628).
@@ -241,6 +247,7 @@ pub struct TeamArena {
     pub last_active_alliance: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TeamArena>() == 0x2C48);
 
 /// Worm state constants and helpers.

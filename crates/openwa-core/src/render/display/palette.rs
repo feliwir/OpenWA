@@ -32,6 +32,7 @@ pub struct Palette {
     pub _unknown_008: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<Palette>() == 0x28);
 
 // Generate calling wrappers: Palette::set_mode(), Palette::init(), Palette::reset()

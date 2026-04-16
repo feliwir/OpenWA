@@ -59,6 +59,7 @@ pub struct CGameTask<V: super::base::Vtable = *const core::ffi::c_void> {
     pub sound_emitter: SoundEmitter,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CGameTask>() == 0xFC);
 
 /// Sound emitter sub-object embedded in CGameTask via MSVC multiple inheritance.
@@ -80,6 +81,7 @@ pub struct SoundEmitter {
     pub owner: *mut CGameTask,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SoundEmitter>() == 0x14);
 
 /// Vtable for the SoundEmitter sub-object (0x669CF8, 12 slots).

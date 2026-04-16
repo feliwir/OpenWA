@@ -40,4 +40,5 @@ pub struct RenderEntry {
     /// Unknown data.
     pub _unknown: [u8; 16],
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<RenderEntry>() == 0x14);

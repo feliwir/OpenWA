@@ -323,4 +323,5 @@ pub struct DDGameWrapper {
     pub _unknown_6ef0: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DDGameWrapper>() == 0x6F10);

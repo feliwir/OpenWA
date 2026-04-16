@@ -66,6 +66,7 @@ pub struct Music {
     pub streaming: StreamingAudio,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<Music>() == 0x354);
 
 /// Streaming audio engine — WAV file streaming via DirectSound double-buffering.
@@ -156,6 +157,7 @@ pub struct StreamingAudio {
     pub _unknown_1a4: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<StreamingAudio>() == 0x1C4);
 
 /// WAVEFORMATEX PCM subset (18 bytes) — matches the Windows WAVEFORMATEX layout.
@@ -171,6 +173,7 @@ pub struct WaveFormatPcm {
     pub cb_size: u16,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<WaveFormatPcm>() == 18);
 
 /// MMCKINFO (20 bytes) — multimedia chunk info.
@@ -186,6 +189,7 @@ pub struct MmckInfo {
     pub dw_flags: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<MmckInfo>() == 20);
 
 /// Music vtable — 6 slots at 0x66B3E0.

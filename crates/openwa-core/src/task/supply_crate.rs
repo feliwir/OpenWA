@@ -73,6 +73,7 @@ pub struct CTaskCrate {
     pub _unknown_4ac: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskCrate>() == 0x4B0);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().

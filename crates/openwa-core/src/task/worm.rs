@@ -435,6 +435,7 @@ pub struct CTaskWorm {
     pub _unknown_3f4: [u8; 0x3FC - 0x3F4],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskWorm>() == 0x3FC);
 
 // Generate typed vtable method wrappers: handle_message(), on_contact_entity(), etc.

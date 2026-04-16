@@ -90,6 +90,7 @@ pub struct CTaskFilter {
     pub _unknown_94: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskFilter>() == 0xB4);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().

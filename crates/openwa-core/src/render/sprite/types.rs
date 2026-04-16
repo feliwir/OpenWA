@@ -34,6 +34,7 @@ pub struct SpriteFrame {
     pub end_y: u16,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteFrame>() == 0x0C);
 
 /// Per-sprite subframe cache entry (0xC bytes).
@@ -69,8 +70,11 @@ pub struct SpriteSubframeCache {
     pub decoded_size: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteSubframeCache>() == 0x0C);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteSubframeCache, decoded_ptr) == 0x04);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteSubframeCache, decoded_size) == 0x08);
 
 /// Per-`SpriteBank` subframe cache entry (0xC bytes).
@@ -95,8 +99,11 @@ pub struct SpriteBankSubframeCache {
     pub decoded_ptr: *mut u8,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteBankSubframeCache>() == 0x0C);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankSubframeCache, decoded_size) == 0x04);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankSubframeCache, decoded_ptr) == 0x08);
 
 /// Per-`SpriteBank` frame bounding-box entry (0xC bytes).
@@ -126,6 +133,7 @@ pub struct SpriteBankBboxEntry {
     pub end_y: u16,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteBankBboxEntry>() == 0x0C);
 
 /// Sprite object (0x70 bytes, vtable 0x66418C).
@@ -201,8 +209,11 @@ pub struct Sprite {
     pub _unknown_6c: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<Sprite>() == 0x70);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(Sprite, bitgrid) == 0x34);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(Sprite, raw_frame_header_ptr) == 0x60);
 
 /// SpriteBank — indexed sprite container (0x17C bytes).
@@ -278,12 +289,19 @@ pub struct SpriteBank {
     pub _trailing: [u8; 0x17C - 0x15C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteBank>() == 0x17C);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBank, frame_table) == 0x10);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBank, bbox_table) == 0x18);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBank, subframe_cache_table) == 0x20);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBank, bitmap_data_ptr) == 0x28);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBank, palette_lut) == 0x30);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBank, frame_bitgrid) == 0x130);
 
 /// Animation metadata entry in a `SpriteBank::frame_table` (0xC bytes).
@@ -333,11 +351,17 @@ pub struct SpriteBankFrame {
     pub data_value: u16,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteBankFrame>() == 0x0C);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankFrame, width) == 0x02);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankFrame, height) == 0x04);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankFrame, base_frame_idx) == 0x06);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankFrame, scale_or_count) == 0x08);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(SpriteBankFrame, data_value) == 0x0A);
 
 /// Sprite vtable (0x66418C, 8 slots).
@@ -421,6 +445,7 @@ pub struct LayerSprite {
     pub frame_array: *mut LayerSpriteFrame,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<LayerSprite>() == 0x70);
 
 /// Standalone `CBitmap` cache entry — 12 bytes, vtable `0x643F64`.
@@ -446,6 +471,7 @@ pub struct CBitmap {
     pub _pad: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CBitmap>() == 0xC);
 
 /// Per-frame surface element for LayerSprite (0x14 bytes).
@@ -479,6 +505,7 @@ pub struct LayerSpriteFrame {
     pub _pad_10: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<LayerSpriteFrame>() == 0x14);
 
 impl LayerSpriteFrame {

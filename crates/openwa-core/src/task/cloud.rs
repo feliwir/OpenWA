@@ -102,6 +102,7 @@ pub struct CTaskCloud {
     pub _unknown_54: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskCloud>() == 0x74);
 
 // Generate typed vtable method wrappers: write_replay_state(), handle_message().

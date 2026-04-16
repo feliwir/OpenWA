@@ -8,6 +8,7 @@ pub mod mine_oil_drum;
 pub mod missile;
 mod overlays;
 pub mod supply_crate;
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub mod team;
 pub mod team_message;
 pub mod turn_game;
@@ -25,6 +26,7 @@ pub use mine_oil_drum::{CTaskMine, CTaskMineVTable, CTaskOilDrum, CTaskOilDrumVT
 pub use missile::{CTaskMissile, CTaskMissileVTable, MissileType};
 pub use overlays::{BungeeTrailTask, WeaponAimTask};
 pub use supply_crate::{CTaskCrate, CTaskCrateVTable};
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub use team::{CTaskTeam, CTaskTeamVTable};
 pub use team_message::TeamMessage;
 pub use turn_game::{CTaskTurnGame, CTaskTurnGameVTable, TurnGameCtx};

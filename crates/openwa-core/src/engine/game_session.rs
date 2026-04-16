@@ -118,6 +118,7 @@ pub struct GameSession {
     pub _unknown_0c4: [u8; 0x5C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<GameSession>() == 0x120);
 
 // ─── Runtime accessors (DLL-injected context only) ──────────────────────

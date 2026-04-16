@@ -2,8 +2,6 @@
 
 use std::sync::atomic::{AtomicU32, Ordering};
 
-use crate::address::va;
-
 /// Delta to add to Ghidra addresses to get runtime addresses.
 static REBASE_DELTA: AtomicU32 = AtomicU32::new(0);
 
@@ -13,10 +11,15 @@ pub fn rb(ghidra_addr: u32) -> u32 {
     ghidra_addr.wrapping_add(REBASE_DELTA.load(Ordering::Relaxed))
 }
 
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
+use crate::address::va;
+
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 extern "system" {
     fn GetModuleHandleA(lpModuleName: *const u8) -> u32;
 }
 
+#[cfg(all(target_os = "windows", target_arch = "x86"))]
 pub fn init() -> i32 {
     let base = unsafe { GetModuleHandleA(std::ptr::null()) };
     let delta = base.wrapping_sub(va::IMAGE_BASE);

@@ -446,7 +446,9 @@ fn generate_bind_methods(slots: &[SlotInfo]) -> syn::Result<proc_macro2::TokenSt
 fn normalize_vtable_fn_type(ty: &syn::Type) -> syn::Type {
     if let syn::Type::BareFn(bare) = ty {
         let needs_unsafe = bare.unsafety.is_none();
-        let needs_abi = bare.abi.is_none();
+        // Check if is win x86
+        let is_win_x86 = cfg!(target_os = "windows") && cfg!(target_arch = "x86");
+        let needs_abi = bare.abi.is_none() && is_win_x86;
 
         if needs_unsafe || needs_abi {
             let mut normalized = bare.clone();

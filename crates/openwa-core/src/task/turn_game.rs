@@ -87,6 +87,7 @@ pub struct TurnGameCtx {
     pub _hud_textbox_b: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<TurnGameCtx>() == 0xAC);
 
 /// CTaskTurnGame vtable — 12 slots. Extends CTask base (8 slots) with turn-game behavior.
@@ -205,6 +206,7 @@ pub struct CTaskTurnGame {
     pub _timer_scale: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskTurnGame>() == 0x2E0);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame(), etc.

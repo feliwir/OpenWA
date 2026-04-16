@@ -101,6 +101,7 @@ pub struct DisplayBase<V: Vtable = *const DisplayBaseVtable> {
     pub clip_y2: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DisplayBase>() == 0x3560);
 
 /// Vtable layout for DisplayBase (32 slots based on headless vtable at 0x66A0F8).
@@ -181,9 +182,13 @@ pub struct FrameCache {
     pub _trailing: [u8; 0x3C - 0x1C],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<FrameCache>() == 0x3C);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(FrameCache, write_head) == 0x08);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(FrameCache, tail_entry) == 0x10);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(FrameCache, entry_count) == 0x18);
 
 /// FrameCache entry header (16 bytes, followed inline by `payload_size - 8`
@@ -217,8 +222,11 @@ pub struct FrameCacheEntry {
     // Followed inline by `payload_size - 8` bytes of payload.
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<FrameCacheEntry>() == 0x10);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(FrameCacheEntry, frame_idx) == 0x08);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(FrameCacheEntry, owner) == 0x0C);
 
 /// Sprite cache (0x28 bytes).
@@ -235,6 +243,7 @@ pub struct SpriteCache {
     pub _pad_08: [u8; 0x28 - 0x08],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<SpriteCache>() == 0x28);
 
 /// SpriteCache vtable (0x664188, 1 slot).

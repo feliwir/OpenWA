@@ -2,5 +2,6 @@
 
 pub mod frontend;
 pub mod mfc;
+#[cfg(target_os = "windows")]
 pub mod registry;
 pub mod resource;

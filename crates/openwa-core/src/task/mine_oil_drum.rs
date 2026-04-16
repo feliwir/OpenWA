@@ -82,6 +82,7 @@ pub struct CTaskMine {
     pub owner_team: i32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskMine>() == 0x128);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().
@@ -114,6 +115,7 @@ pub struct CTaskOilDrum {
     pub roll_counter: u32,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskOilDrum>() == 0x110);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().

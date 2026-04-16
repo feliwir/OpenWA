@@ -41,6 +41,7 @@ pub struct BungeeTrailTask {
     pub sound_emitter: SoundEmitter,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<BungeeTrailTask>() == 0xFC);
 
 /// Weapon aiming task fields.

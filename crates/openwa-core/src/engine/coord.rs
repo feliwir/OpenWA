@@ -20,6 +20,7 @@ pub struct CoordEntry {
     pub center_y_target: crate::fixed::Fixed,
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CoordEntry>() == 0x10);
 
 // ============================================================
@@ -36,6 +37,7 @@ pub struct CoordListEntry {
     pub coord: u32,
     pub flag: u32,
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CoordListEntry>() == 8);
 
 /// Dynamic coordinate array header (12 bytes).
@@ -52,4 +54,5 @@ pub struct CoordList {
     /// Pointer to the data buffer (`capacity * sizeof(CoordListEntry)` bytes).
     pub data: *mut CoordListEntry,
 }
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CoordList>() == 12);

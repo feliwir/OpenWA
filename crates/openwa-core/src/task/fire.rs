@@ -69,6 +69,7 @@ pub struct CTaskFire {
     pub _unknown_b2: [u8; 0x26],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<CTaskFire>() == 0xD8);
 
 // Generate typed vtable method wrappers: handle_message(), process_frame().

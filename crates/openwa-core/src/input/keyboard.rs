@@ -40,6 +40,7 @@ pub struct DDKeyboard {
     pub _unknown_31c: [u8; 0x20],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DDKeyboard>() == 0x33C);
 
 impl DDKeyboard {

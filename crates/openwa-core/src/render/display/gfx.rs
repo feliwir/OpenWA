@@ -238,13 +238,21 @@ pub struct DisplayGfx {
     pub _tail: [u8; 0x24E28 - 0x24E08],
 }
 
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::size_of::<DisplayGfx>() == 0x24E28);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, embedded_bitgrid) == 0x3DA8);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, sprite_table) == 0x3DD4);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, tile_bitmap_sets) == 0x4DD4);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, tile_total_width) == 0x4DDC);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, tile_total_height) == 0x4DE0);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, tile_col_width) == 0x4DE4);
+#[cfg(target_arch = "x86")]
 const _: () = assert!(core::mem::offset_of!(DisplayGfx, tile_row_height) == 0x4DE8);
 
 impl DisplayGfx {
